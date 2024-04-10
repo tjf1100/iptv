@@ -1,0 +1,25 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # 选择所需的 Python 版本
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt # 如果有依赖项，确保在 requirements.txt 中列出
+    - name: Run Python script
+      run: IPTV0202.py # 替换为你的 Python 脚本名称
